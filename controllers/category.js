@@ -24,7 +24,7 @@ const {Category} = require('../models');
     } catch (error) {
          console.error('Error creating category: ', error);
         return res.status(500).json({ 
-            message: 'Server error when reating category: ', 
+            message: 'Server error when creating category: ', 
             error: error.message 
         });
     }

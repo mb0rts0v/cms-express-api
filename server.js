@@ -9,6 +9,8 @@ app.use( express.json() );
 app.use( express.urlencoded( { extended: true } ) );
 const categoryRoutes = require('./routes/category');
 const contentItemRoutes = require('./routes/contentItem');
+const authRoutes = require('./routes/auth');
+app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/items', contentItemRoutes);
 app.use( cors( { origin: `http://localhost:5173` } ) );
