@@ -18,7 +18,7 @@ exports.signup = async (req, res) => {
             error: error.message 
         });
     }
-}
+};
 
 exports.login = async (req, res) => {
     try {

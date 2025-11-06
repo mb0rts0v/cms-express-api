@@ -43,7 +43,7 @@ const {Category} = require('../models');
             error: error.message 
         });
     }
- }
+ };
  
  exports.updateCategory = async (req, res) => {
     try {

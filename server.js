@@ -1,5 +1,6 @@
 require( "dotenv" ).config();
 const express = require( "express" );
+const path = require('path');
 const { connectDB } = require("./config/database"); 
 const cors = require( "cors" );
 const PORT = process.env.PORT || 3000;
@@ -13,6 +14,7 @@ const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/items', contentItemRoutes);
+app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
 app.use( cors( { origin: `http://localhost:5173` } ) );
 const startServer = async () => {
     try {
