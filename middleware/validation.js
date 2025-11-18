@@ -17,13 +17,13 @@ exports.contentItemRules = [
     .notEmpty().withMessage('Title is required')
     .isLength({ min: 3 }).withMessage('Title must be at least 3 characters long'),
 
-    body('descrition')
+    body('description')
     .optional()
     .isString().withMessage('Description must be a string'),
 
     body('price')
     .optional()
-    .isFloat({ gt: 0 }).withMessage('Price must be a positive number'),
+    .isFloat({ gte: 0 }).withMessage('Price must not be a negative number'),
 
     body('categoryId')
     .optional()

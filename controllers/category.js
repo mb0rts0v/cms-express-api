@@ -74,11 +74,13 @@ const {Category} = require('../models');
         const deletedRowCount = await Category.destroy(
             { where: { id: req.params.id } }
         );
+        
         if(deletedRowCount == 0){
             return res.status(404).json({
                 message: 'Category with given ID is not found.'
             });
         }
+        return res.status(204).send();
     } catch (error) {
          console.error('Error deleting category ', error);
         return res.status(500).json({ 

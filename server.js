@@ -6,6 +6,7 @@ const cors = require( "cors" );
 const PORT = process.env.PORT || 3000;
 const app = express();
 const models = require('./models'); 
+app.use( cors() ); 
 app.use( express.json() );
 app.use( express.urlencoded( { extended: true } ) );
 const categoryRoutes = require('./routes/category');
@@ -15,7 +16,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/items', contentItemRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'public', 'uploads')));
-app.use( cors( { origin: `http://localhost:5173` } ) );
+app.use(express.static(path.join(__dirname, 'frontend')));
 const startServer = async () => {
     try {
         await connectDB(); 
@@ -30,4 +31,6 @@ const startServer = async () => {
 };
 startServer();
 
-app.get( "/", ( request, response ) => response.send("API is running and connected to DB!") );
+app.get( "/", ( req, res ) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
+});
